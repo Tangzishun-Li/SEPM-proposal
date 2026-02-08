@@ -1,0 +1,488 @@
+\documentclass[11pt, a4paper]{article}
+
+%% =========================
+%% Packages & Setup
+%% =========================
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % utf8 is generally preferred over utf8x
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+
+% Fonts and Typography
+\usepackage{mathpazo} % Palatino font for body text
+\usepackage[scaled=0.95]{helvet} % Helvetica for sans-serif text
+\usepackage{microtype} % Improves spacing and kerning
+
+% Graphics and Colors
+\usepackage{graphicx}
+\usepackage[table,xcdraw]{xcolor}
+\definecolor{primaryBlue}{RGB}{0, 51, 102} % Midnight Blue
+\definecolor{accentGray}{RGB}{100, 100, 100}
+
+% Formatting tools
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx} % For better tables
+\usepackage{titlesec} % For customizing section headers
+\usepackage{fancyhdr} % For headers and footers
+\usepackage[colorlinks=true, allcolors=primaryBlue, urlcolor=primaryBlue]{hyperref}
+
+%% =========================
+%% Style Customization
+%% =========================
+
+% 1. Header and Footer Configuration
+\pagestyle{fancy}
+\fancyhf{} % Clear all default fields
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Header Content
+\lhead{\small \textbf{Team\textbf{5} BSAI301 Project Proposal}}
+\rhead{\small Tody}
+
+% Footer Content
+\lfoot{\small \today} % Current Date
+\cfoot{\small \thepage} % Page Number
+
+% 2. Section Heading Styling
+\titleformat{\section}
+  {\Large\bfseries\sffamily\color{primaryBlue}} % Format
+  {\thesection}{1em}{}[\titlerule] % Label, spacing, and line after
+  
+\titleformat{\subsection}
+  {\large\bfseries\sffamily\color{primaryBlue}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\sffamily\color{black}}
+  {\thesubsubsection}{1em}{}
+
+% 3. List Spacing
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=2pt}
+\setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=2pt}
+
+% 4. Custom Command for Instructions (Gray Text)
+% Usage: \instruction{Text here}
+% When ready to submit, you can redefine this to be empty: \newcommand{\instruction}[1]{}
+\newcommand{\instruction}[1]{
+    \begin{quote}
+    \small\color{accentGray}\textit{#1}
+    \end{quote}
+}
+
+% 5.表格所需的宏包
+\usepackage{tabularx}
+\usepackage{booktabs} % 也就是 \toprule, \midrule, \bottomrule
+\usepackage{array}    % 用于表格格式控制
+
+
+%先写中文啊，我看不懂
+\usepackage{ctex}
+
+%% =========================
+%% Document Start
+%% =========================
+
+\begin{document}
+
+% =========================
+% Title Page / Header Block
+% =========================
+\begin{center}
+    \vspace*{0.5cm}
+    {\Huge \bfseries \sffamily Tody —— Your Desktop Companion} \\[0.5em]
+    {\Large BSAI301 Project Proposal} \\[1.5em]
+    \rule{0.8\textwidth}{1pt} \\[1.5em]
+\end{center}
+
+\instruction{先写中文吧，要不不好查看}
+
+% =========================
+% Team Information
+% =========================
+\noindent
+\begin{minipage}{0.48\textwidth}
+    \textbf{\sffamily Team ID:} 
+    % \raisebox 用于调整垂直对齐，让大号数字不至于太突兀
+    % \resizebox 用于将数字强制放大到指定高度 (此处为 1.8cm)
+    \raisebox{-15pt}{%
+        \resizebox{!}{1.8cm}{%
+            \color{primaryBlue}% 使用主题色
+            \fontfamily{pzc}\selectfont % 使用 Zapf Chancery 书法字体
+            \textit{\textbf{\vspace{10em} 5}}%
+        }%
+    }
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \textbf{\sffamily Team Members:}
+    \begin{itemize}
+        \item Zou Dexin (1230013671)
+        \item Tang Shengmei (1230003441)
+        \item Qian Siqi (1230014081)
+        \item Li Tangzishun (1230017934)
+    \end{itemize}
+\end{minipage}
+
+\vspace{1cm}
+
+% =========================
+% 1. Project Overview
+% =========================
+\section{Project Overview}
+
+\subsection*{Project Purpose (Product Description)}
+
+\begin{itemize}
+\item \textbf{Overview:} <本产品（Tody）是一款致力于将日程与待办管理轻松化的桌面弹窗软件。产品将日程管理系统与当下流行的桌面宠物系统相结合，旨在消解传统待办管理的刻板与严肃的同时更好地帮助用户达成短期与长期的目标。产品主要包括每日待办管理；短期与长期目标管理；桌面宠物陪伴互动；宠物皮肤收集切换等功能。桌面宠物概念的加入会在一定层面上成为督促与提醒用户实时完成任务的标识；提升趣味度并降低用户对于待办管理程序提醒的抵触感；增强产品与用户的温度与陪伴感；并且在用户完成待办项目时给予成就感以达成良性循环。该产品主要面向年轻、精通技术的职场人士，尤其适合大学生和远程工作者使用。>
+\end{itemize}
+
+\subsection*{Motivation and Goals (Business Requirements)}
+
+\begin{itemize}
+    \item \textbf{Motivation:} <许多人难以在快节奏的当下时代坚持完成预定的短期与长期计划，传统待办事项工具功能单一，缺乏情感互动与短时正向反馈，导致用户粘性低，中途放弃率高。本项目抓住了“提升待办管理系统趣味性与即时正反馈性”的市场机会，将任务管理与轻量级养成收集元素结合，以满足用户对兼具实用性与趣味性工具的需求。>
+
+    \item \textbf{Stakeholders:} <1.主要用户端：需要管理每日任务寻求动力提升的学生，专业人士以及自由职业者
+    2.潜在用户端：喜爱简约长时陪伴工作群体，可爱宠物喜好者，效率工具应用商店，需求简单好用日程管理人员>
+
+    \item \textbf{Goals:} <1.核心功能：构建一个稳定易用的系统，无缝融合任务管理（创建，完成，追踪）与虚拟宠物养成（皮肤解锁，状态互动，情绪价值提供）两大核心模块。
+    2.提升动力：通过皮肤奖励与宠物反馈机制，显著提高用户完成日常任务的意愿与持续性。
+    3.增强长期参与度：通过收集系统、成就体系和潜在的社交功能，培养用户长期使用习惯，提高产品粘性。
+    4.差异化优势：在效率工具市场中，打造一个具有鲜明情感化、游戏化特色的产品标识，吸引特定用户群体。
+    5.未来扩展：设计灵活的系统架构，为后续添加更多宠物互动，社交分享与服务器存取提供可能。>
+\end{itemize}
+
+
+
+% =========================
+% 2. Requirements Engineering
+% =========================
+\section{Requirements Engineering}
+
+本节详细阐述了“桌面宠物生产力助手”的需求架构。该项目旨在通过将任务管理逻辑与情感交互引擎相结合，解决用户在长时间办公或学习中产生的动力缺失问题。
+
+\subsection{User Requirements}
+
+用户需求（UR）从高维度描述了目标群体的核心期望，这些需求的制定旨在填补人类心理需求与软件功能之间的差距。
+
+\begin{itemize}
+    \item \textbf{UR-1: 无缝的任务管理与系统交互体验 } \\
+    用户需要一个集中式的、非侵入式的桌面界面来管理每日任务。与传统的手机端 App 不同，该小的悬浮窗必须常驻桌面，使用户在不切换窗口、不中断工作流的情况下，即可快速查看、记录并汇报任务进度，除了快速查看任务外，用户期望利用 PC 端特性，通过拖拽文件等直观操作与桌宠互动，简化任务创建流程，从而维持“心流”状态。 
+    
+    \item \textbf{UR-2: 过程与结果并重的游戏化的正向激励/反馈机制} \\
+    为了应对“工作倦怠”现象，用户需要一个能够将枯燥繁琐的任务工作转化为一种令人愉悦体验的奖励系统。这需要一个明确的关联逻辑：即通过在现实中完成工作（任务），换取虚拟世界的成长（宠物升级或外观变化），从而形成积极的心理反馈闭环。
+    为了应对“工作倦怠”，用户不仅需要任务完成后的奖励，还需要对“专注过程”的正向反馈。通过将现实中的专注时长和任务产出转化为虚拟世界的成长与随机惊喜，形成持续的动力闭环。
+
+    \item \textbf{UR-3: 深度情感支持与动态生命感} \\
+    除了基本的实用功能外，用户还希望获得一个具有“生命感”的伙伴。该系统应当提供一个虚拟的实体，能够根据用户的作业习惯动态做出反应，在压力较大或拖延的时，虚拟宠物能通过动态反馈（如文字激励或情绪表达）提供陪伴感，模拟一种“并肩作战”的氛围。
+    除了言语激励，系统应表现出对用户关注度的依赖（如不理睬会导致生病），并通过随机的自主行为（如旅游、寻宝）模拟真实生物的不可预测性，增强陪伴的趣味性。
+
+\end{itemize}
+
+\subsection{System Requirements}
+
+系统需求将上述抽象的用户需求转化为具体的可落地开发标准。 
+
+\subsubsection{Functional Requirements (FR)}
+
+\begin{itemize}
+    \item \textbf{FR-1: 任务生命周期管理与文件交互子系统 } \\
+    该系统应为任务管理提供一个完整的 CRUD接口。每个任务实体必须包含以下属性：标题（字符串）、优先级权重（1 到 5 的整数）以及截止日期（时间戳）。系统应支持进度汇报功能，允许用户手动勾选或输入任务完成的百分比，这将触发宠物的反应逻辑，并将此数据作为后续奖励计算的基准。
+   \textbf{扩展功能：} 系统应支持文件关联逻辑，用户可将桌面文件拖拽至桌宠图标，自动识别并创建关联任务（如拖入 docx 文件自动创建“编辑文档”任务）。 
+    
+    \item \textbf{FR-2:动态激励与数值经济系统与惩罚机制 } \\
+   系统应内置一套奖励算法，当任务状态变更时，系统需自动结算奖励。计算公式为：奖励值 = 基础分 × 任务权重 × 完成效率。系统应包含一个“装扮/商店”模块，允许用户消耗已获得的虚拟货币来购买不同的皮肤、配饰或环境主题，并实时更新桌面宠物的渲染模型。
+   系统根据任务权重及**专注时长**结算奖励。**奖励逻辑：** 引入专注时长奖励（金币/经验 $\propto$ 分钟数）。**惩罚逻辑：** 若长期不处理任务，宠物将进入“负面状态”（生病、变脏），极端情况下会“离家出走”，需消耗金币寻回。
+  
+    \item \textbf{FR-3: 专注模式与情境感知交互引擎} \\
+  系统应内置“番茄钟”专注引擎。开启后，桌宠切换至工作状态（如戴镜看书），关闭娱乐反馈仅显示倒计时。此外，引擎需控制“随机事件”生成，使宠物在闲置时自主执行打怪、旅游等行为，并反馈“非预期”奖励。
+  该系统应包含一个基于规则的引擎，用于监控任务状态。例如：当任务接近截止日期（如剩余时间 < 10\%）时，宠物需切换至“紧急”、“焦虑”或“催促”状态；若用户长时间（如超过 3 小时）未进行操作，宠物应表现出“瞌睡”或“求关注”，以促使用户参与。系统需支持气泡对话框功能，根据预设的随机话术库结合当前任务进度，为用户生成个性化的激励语句。
+\end{itemize}
+
+\subsubsection{Non-Functional Requirements (NFR)}
+
+非功能性需求定义了操作约束和质量标准。
+
+\begin{itemize}
+    \item \textbf{NFR-1: Usability and UI Non-Obstructiveness} \\
+    应用程序必须使用无边框、透明背景的浮窗形式。它必须支持“点击穿透”模式或“透明度动态调节”（范围 0.2-1.0），以确保在不与宠物交互且宠物可见的情况下，它不会遮挡用户与IDE 或办公软件（例如集成开发环境或文字处理软件）进行交互。
+    
+    \item \textbf{NFR-2: 资源效率与后台静默运行}  \\
+    作为一个后台常驻程序，系统必须极度轻量化且高度优化。。在静态待机状态下，CPU 占用率，以确保该系统不影响主要工作的应用程序或游戏的运行。 
+    
+    \item \textbf{NFR-3: 数据完整性和持久性} \\
+   系统必须确保用户数据的 100\% 安全。所有任务数据、奖励记录和宠物状态应实时保存至本地轻量级数据库（如 SQLite）中不会被删除。在程序意外关闭或系统重启后，宠物的所有状态和待办事项列的所有进度必须在下次启动时应完整恢复。 
+\end{itemize}
+
+\section{Functional Decomposition}
+
+为了确保系统的可维护性与扩展性，本项目采用了模块化的设计思路，将复杂的桌面宠物系统分解为三个互相关联的核心子系统。通过这种解耦设计，任务处理逻辑、数值计算与前端动画渲染得以独立运行。
+
+\subsection{数据持久层 (Data Persistence Layer)} 该层级负责系统中所有静态与动态数据的存储与管理，是整个软件的底层支撑。
+\begin{itemize} 
+   \item \textbf{任务存储组件与文件关联数据库：} 负责存储、管理所有代办事项的元数据（标题、权重、时间戳等）及本地文件的映射关系。通过 SQLite 数据库实现快速的 CRUD 操作，确保在高频率更新进度时数据的实时一致性，支持事务级持久化。 
+   \item \textbf{状态与资产存档：} 记录用户的数值（金币、经验、奖励余额）、已解锁的皮肤资产以及宠物的当前成长等级、生理状态（生病、出走状态）和已解锁资产。该组件负责在系统启动时载入用户配置，并在系统关闭前完成最后一次状态保存。 
+\end{itemize}
+
+\subsection{业务逻辑层 (Business Logic Layer)} 作为系统的“大脑”，该层级负责处理用户行为并决策宠物的反应，连接了数据与视觉表现。 
+\begin{itemize} 
+   \item \textbf{专注与数值计算引擎：} 核心逻辑组件。它监听任务完成信号，根据预设的算法（奖励值 = 基础分 × 权重 × 效率）计算收益，并触发账户余额更新。 驱动番茄钟逻辑，负责专注时间的统计与状态锁定的逻辑判定。 
+   \item \textbf{行为决策引擎与随机事件决策器：} 该引擎基于规则脚本运行。它持续监控任务的时效性与用户的活跃度。当检测到特定触发点（如任务即将逾期或长时间无操作）时，它会向视觉层发送特定的信号指令。处理“非预期”奖励逻辑，在后台计算宠物的自主行为（寻宝/打怪），并根据任务完成率触发负面状态变更。 
+   \item \textbf{交互与对话控制器：} 负责根据当前环境状态，从随机话术库中筛选出最贴切的文字内容，并将其推送至桌宠的文字气泡模块。处理 OS 层的拖拽事件，实现文件路径到任务实体的转化。
+\end{itemize}
+
+\subsection{视觉展示层 (Presentation Layer)} 该层级直接与用户进行交互，负责将逻辑层生成的抽象指令转化为具象的视觉效果。 
+\begin{itemize} 
+   \item \textbf{透明窗口渲染引擎：} 基于图形库（如 PyQt）构建，专门处理无边框浮窗的置顶显示、透明度调节以及“点击穿透”逻辑，确保其不干扰主程序工作。 
+   \item \textbf{显示状态机：}管理多套状态序列（如：普通、专注工作、生病、离家出走后的空白占位）。 并进行图像切换。它包含“呼吸”、“行走”、“欢呼”、“委屈”等多种画面状态，并根据逻辑层发出的状态指令平滑地进行画面过渡。 
+   \item \textbf{渲染引擎与UI 交互界面：} 负责透明窗口的置顶显示及倒计时 UI 的浮动渲染。包含任务列表的弹出式菜单、商店兑换界面以及设置面板，为用户提供简洁的输入入口。 
+\end{itemize}
+ 
+
+% =========================
+% 3. Scenario / Use Case
+% =========================
+\section{Scenario or Use Case Description}
+
+% \instruction{
+% Provide at least one scenario or use case that demonstrates how the system is used from start to end.
+% This section should help validate and illustrate the requirements defined above.
+% }
+
+\subsection*{Use Case: Daily progress reporting for tasks}
+
+\textbf{Assumptions / Preconditions}
+
+% \instruction{State the conditions that must hold before the scenario begins.}
+
+\begin{itemize}
+    \item The user has already installed the desktop pet application and logged in.
+    \item The user has already created at least one long-term or short-term task.
+    \item The system is running in the background, with the desktop pet visible on the desktop.
+\end{itemize}
+
+\textbf{Normal Flow}
+
+% \instruction{Describe the typical sequence of interactions between the user and the system.}
+
+\begin{enumerate}
+    \item The user moves the cursor over the desktop pet. The desktop pet reacts with a happy expression and a speech bubble saying words for asking progress like “Hello! How’s your progress for *task name* today?” or just for encouragement “Keep up going today!”
+    \item The user clicks on the desktop pet to open the panel.
+    \item In the panel, the user selects the corresponding task in the progress report interface.
+    \item The user enters what he/she has done for the task to report the task progress and checks off the completed tasks in the sub-tasks of long-term goals. The system will automatically decide proportion of the completed tasks. If the task is short-term, the user can just enter that it has been done without deciding the completion percentage.
+    \item The system validates the input and randomly selects a predefined encouraging message from a local database (e.g., “Great job! Keep going!”, “Victory is just ahead!”).
+    \item Based on the progress percentage, rewards are calculated and automatically added to the user’s account. Long-term tasks and short-term tasks have different reward standards.
+    \item The pet celebrates with a special emotion, and a notification shows the rewards earned (e.g., “+10 coins! Congratulations!”).
+    \item The system saves the updated progress and upgraded rewards.
+\end{enumerate}
+
+\textbf{Exception / Error Flow}
+
+% \instruction{Describe how the system behaves when errors, invalid inputs, or abnormal situations occur.}
+
+\begin{itemize}
+    \item If the user enters nothing or something irrelevant to the task, the system shows an error like “Uh-oh! I cannot understand!”
+    \item If the task is not found (e.g., deleted during the session), the system shows an error like “The task has disappeared into the universe! Please reset it!”
+\end{itemize}
+
+\textbf{Concurrent Activities}
+
+% \instruction{Describe any actions that may occur in parallel, or explicitly state ``None'' if not applicable.}
+
+The pet continues to perform different emotions while the task panel is open. System notifications like calendar reminders may appear, but will not interrupt the reporting flow.
+
+\vspace{0.5em}
+\textbf{End State}
+
+% \instruction{Describe the final state of the system after the scenario completes.}
+
+ The progress of the user’s task is saved in the local database. Rewards are updated and available in the shop for new appearances. The pet returns to its idle state, with possible visual updates (e.g., wearing a new appearance).
+
+% =========================
+% 4. Feasibility Study
+% =========================
+\section{Feasibility Study}
+
+% \instruction{
+% Analyze whether the proposed project can realistically be completed within the constraints of this course.
+% Justify your conclusions rather than simply stating feasibility.
+% }
+
+\begin{itemize}
+    \item \textbf{Skills:} The foundational skills includes HTML and JavaScript. Core challenge lies on system interaction logic design, particularly managing the multi-state behavior of the floating pet window. Additionally, the project requires ability of using the Electron architecture and Node.js related operations. Our team has the ability to learn the skills and apply them in the project.
+    \item \textbf{Data:} The system primarily handles user data such as tasks, progress and rewards, stored locally using a structured file like JSON for privacy. The main external data interaction is calendar events via standard .ics (iCalendar) files. Such data will be imported from calender software like Google Calender, which is accessible.
+    \item \textbf{Time:} The project scope is well-suited for a nearly 10-week development cycle of this course. Core desktop application (Electron shell), basic pet rendering and click interaction, and local task list management can be built in 3-4 weeks. Implementation of progress reporting logic, reward system, and the core state management for the floating window can be built in 2-3 weeks, leaving 3-4 weeks for advanced features, testing, polishing and documentation.
+    \item \textbf{Computing Resources:} For hardware, Development and testing will be conducted on team members' personal laptops (Windows), which is sufficient. For Software, we will use free, industry-standard tools: Visual Studio Code as the IDE, Git with GitHub for version control and collaboration, and Electron as the application framework which can run across Windows and Mac platforms. Node.js and npm will manage dependencies. No specialized cloud services are required for development.
+    \item \textbf{Budget:} Expected costs are minimal and transparent, only including AI service subscription and Overleaf writing platform Subscription. All development tools (Visual Studio Code, Git and so on) are free. No hardware, cloud services, or paid APIs are needed. Any incurred costs will be shared equally among all four team members.
+\end{itemize}
+
+% =========================
+% 5. System Structure
+% =========================
+\section{System Structure}
+
+\subsection*{Architecture Overview}
+
+%\instruction{Insert a high-level architecture diagram showing major components and their interactions.}
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\linewidth]{architecture.pdf}
+%     \caption{High-level system architecture}
+%     \label{fig:arch}
+% \end{figure}
+
+\subsection*{Major Components and Responsibilities}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{软件系统架构图.png}
+    \caption{High-level system architecture}
+    \label{软件系统架构图}
+\end{figure}
+
+
+\begin{description}[font=\bfseries, style=nextline]
+    \item[Component A] <Responsibilities>
+    \item[Component B] <Responsibilities>
+    \item[Component C] <Responsibilities>
+\end{description}
+
+% =========================
+% 6. Project Plan and Risk Analysis
+% =========================
+\section{Project Plan and Risk Analysis}
+
+\subsection*{Project Plan}
+
+\subsubsection*{Milestones and Timeline}
+
+
+\begin{table}[htbp]
+    \centering
+    % 行高保持舒适度
+    \renewcommand{\arraystretch}{1.3}
+    
+    % --- 关键修改区域 ---
+    % 1. |c| : 第一列保持居中
+    % 2. >{\hsize=0.65\hsize}X : 中间列变窄 (系数 0.65)
+    % 3. >{\hsize=1.35\hsize}X : 最后一列变宽 (系数 1.35)
+    % 注意：0.65 + 1.35 = 2 (因为总共有两列 X)
+    % 去掉了 \raggedright，现在默认就是“两端对齐”
+    % --------------------
+    \begin{tabularx}{\textwidth}{|c| >{\hsize=0.65\hsize}X | >{\hsize=1.35\hsize}X |}
+        \hline
+        \textbf{Time Period} & \textbf{Milestone} & \textbf{Outcome / Deliverable} \\
+        \hline
+        
+        Week 1 & Requirement Refinement \& Style Definition & Refine product requirements based on MVP, prioritize the backlog of functional requirements, and confirm the overall art style of the product \\
+        \hline
+        
+        Week 2 & Prototype \& Logical Design & Complete the design of UI/UX prototypes, database and data models, as well as the logical framework for pet status and task reward rules \\
+        \hline
+        
+        Week 3 & Development Environment \& Framework Construction & Set up the unified project development environment and implement the basic front-end and back-end technical frameworks \\
+        \hline
+        
+        Week 4 & Core Interaction Logic Implementation & Realize the interactive logic of front-end and back-end task lists and the core function of achievement distribution \\
+        \hline
+        
+        Week 5 & Special Function Module Development & Implement the floating window component, pet animation loading function and the whole set of skin management system \\
+        \hline
+        
+        Week 6 & Local Data Storage Development & Complete the development of user data local storage function to ensure data persistence \\
+        \hline
+        
+        Week 7 & Functional \& Basic Performance Testing & Conduct a full round of system functional testing and basic performance testing for all modules \\
+        \hline
+        
+        Week 8 & Bug Fix \& Product Parameter Optimization & Fix the bugs found in the test phase and optimize the key product parameters for better experience \\
+        \hline
+        
+        Week 9 & Final Inspection \& Product Promotion Preparation & Conduct the final security and performance inspection of the whole system, and launch the product promotion work \\
+        \hline
+        
+        Week 10 & Project Review \& Advanced Feature Planning & Carry out a comprehensive project review and conduct the outlook and optimization design of advanced product features \\
+        \hline
+        
+    \end{tabularx}
+\end{table}
+
+
+\subsection*{Risk Identification and Mitigation}
+
+\begin{itemize}
+    \item \textbf{Risk 1:} 依赖于第三方开发的动画等项目可能发生版本不兼容问题 \\
+    \textit{Impact:} Animation functions may be abnormal, system operation may be stuck or even crash, affecting user experience and system stability, and increasing later maintenance costs. \\
+    \textit{Mitigation:} Conduct in advance research on the compatibility history of third-party projects, select mature and stable versions, sign compatibility guarantee agreements with third parties, reserve adaptation interfaces during development, and regularly test version compatibility and update in a timely manner.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 2:} 在不同的操作系统端也可能出现不兼容问题 \\
+    \textit{Impact:} Result in inconsistent cross-platform user experience, some users cannot use the core functions of the system normally, narrow the applicable scope of the system, and affect user retention. \\
+    \textit{Mitigation:} Adopt cross-platform compatible technology frameworks in the early stage of development, carry out synchronous adaptation and development for mainstream operating systems (Windows, macOS, etc.), establish a multi-system test environment, conduct cross-system compatibility tests at each development stage, and fix adaptation vulnerabilities in a timely manner.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 3:} 开发过程中主要目标可能逐渐偏离，使得系统过于杂乱 \\
+    \textit{Impact:} Lead to chaotic system architecture, reduced development efficiency, soaring later maintenance costs, unremarkable core functions, and affect project delivery progress and quality. \\
+    \textit{Mitigation:} Clarify the core goals and demand boundaries of the project, establish a demand change review mechanism, each demand adjustment must go through team review, hold regular project review meetings to check the development progress and core goals, correct the deviation direction in a timely manner, and simplify non-core functions.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 4:} 由于交互系统较为复杂测试压力会指数增长，可能会出现不可遇见的交互错误 \\
+    \textit{Impact:} Interactive errors may hinder user operations, make functions unavailable normally, reduce user trust, increase later bug repair costs, and delay project launch time. \\
+    \textit{Mitigation:} Adopt modular testing methods, split complex interactive modules for separate testing, introduce automated testing tools to improve testing efficiency and coverage, set up a special interactive testing team, conduct comprehensive testing by simulating real user scenarios, and predict and optimize possible interactive conflicts in advance.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 5:} 项目拥有的正反馈机制无法正确激励用户，反而增大用户使用压力 \\
+    \textit{Impact:} Reduce user enthusiasm for use, lower retention rate, violate the original intention of system design, and affect product reputation. \\
+    \textit{Mitigation:} Clarify users' preferences for positive feedback through user research in the early stage of development, design diverse and lightweight positive feedback forms (such as simple prompts, small rewards, etc.), conduct small-scale user tests before launch, collect feedback and adjust the positive feedback mechanism to avoid pressure caused by excessive incentives.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 6:} 桌面系统功能过于杂乱分散用户办公注意力 \\
+    \textit{Impact:} Reduce user office efficiency, violate the core demand of office assistance, lead to decreased user satisfaction, and lose core office users. \\
+    \textit{Mitigation:} Sort out the priority of system functions, retain core office assistance functions, simplify unnecessary functions, adopt classified storage design (such as hierarchical function menus), allow users to customize desktop function display, hide infrequently used functions, and avoid function redundancy.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 7:} 用户私密日程信息保护问题 \\
+    \textit{Impact:} Leakage of users' private information, violation of user privacy, triggering a user trust crisis, which may lead to user loss and even face compliance risks. \\
+    \textit{Mitigation:} Use encryption technology to store users' private schedule information, strictly control information access permissions, only authorized users can view their own information, regularly detect security vulnerabilities, improve the privacy protection agreement, clarify the scope of information use, and avoid information leakage.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 8:} 无法拓宽除固定受众外的群体 \\
+    \textit{Impact:} User scale growth is limited, market share is difficult to improve, commercial monetization capacity is insufficient, and the long-term development of the project is affected. \\
+    \textit{Mitigation:} Investigate the needs of potential audiences, optimize product functions in a targeted manner, adapt to the usage scenarios of different groups, carry out precise marketing promotion, highlight the differentiated advantages of products, expand multi-channel communication, and attract non-fixed audience groups.
+    
+    \vspace{0.5em} % Extra space between risks
+    
+    \item \textbf{Risk 9:} 相似差异点会被市场迅速赶超覆盖 \\
+    \textit{Impact:} Reduce product competitiveness, squeeze market share, make it difficult to form core competitive barriers, and affect the commercial value of the project. \\
+    \textit{Mitigation:} Continuously pay attention to market dynamics and competitors, increase investment in product innovation, quickly iterate and optimize differentiated functions, create unique core competitiveness, apply for relevant technology or design patents, consolidate differentiated advantages, and lay out the next generation of function upgrades in advance.
+\end{itemize}
+
+
+
+\subsection*{Risk Analysis}
+\begin{itemize}
+    \item \textbf{Risk Analysis:} <技术风险：
+1.依赖于第三方开发的动画等项目可能发生版本不兼容问题
+2.在不同的操作系统端也可能出现不兼容问题
+开发风险：
+1.开发过程中主要目标可能逐渐偏离，使得系统过于杂乱
+2.由于交互系统较为复杂测试压力会指数增长，可能会出现不可遇见的交互错误
+体验风险：
+1.项目拥有的正反馈机制无法正确激励用户，反而增大用户使用压力
+2.桌面系统功能过于杂乱分散用户办公注意力
+3.用户私密日程信息保护问题
+商业风险：
+1.无法拓宽除固定受众外的群体
+2.相似差异点会被市场迅速赶超覆盖>
+\end{itemize}
+
+\end{document}
